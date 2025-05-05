@@ -32,7 +32,7 @@ pub mod test {
 
     #[test]
     fn can_parse_header() -> () {
-        let header: Header = serde_json::from_str(r#"{"typ":"JWT","alg":"MS123"}"#).unwrap();
+        let header: Header = serde_json::from_str(r#"{"typ":"JWT","alg":"HS256"}"#).unwrap();
         println!("header => {:?}", header.header());
         ()
     }

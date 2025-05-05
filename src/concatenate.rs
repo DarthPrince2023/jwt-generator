@@ -15,8 +15,7 @@ pub fn build_jwt<'b>(header: Header<'b>, payload: Payload<'b>) -> Result<String,
         Ok(key) => key,
         Err(error) => format!("Error Occurred => {error:?}")
     };
-
-    //let master_key = std::env::var().map_err(|error| Error::EnvLoadError(error))?;
+    println!("MASTER KEY => {master_key}");
     let mut mac = HMacSha256::new_from_slice(master_key.as_bytes())
         .map_err(|error| Error::InvalidDigestLength(error))?;
     let data = format!("{:?}.{:?}.", header.header(), payload.payload());
